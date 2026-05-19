@@ -44,11 +44,11 @@ class ProfileHeader extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       '+6285179876206',
-                      style: AppTextStyle.bodySmall.copyWith(color: AppColors.surface.withOpacity(0.9)),
+                      style: AppTextStyle.bodySmall.copyWith(color: AppColors.surface.withValues(alpha: 0.9)),
                     ),
                     Text(
                       'ahmadarroziqi@gmail.com',
-                      style: AppTextStyle.bodySmall.copyWith(color: AppColors.surface.withOpacity(0.9)),
+                      style: AppTextStyle.bodySmall.copyWith(color: AppColors.surface.withValues(alpha: 0.9)),
                     ),
                   ],
                 ),
@@ -79,7 +79,7 @@ class ProfileHeader extends StatelessWidget {
                       width: 40,
                       height: 16,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),

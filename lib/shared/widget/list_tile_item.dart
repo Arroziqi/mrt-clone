@@ -5,7 +5,7 @@ import '../../config/theme/app_text_style.dart';
 class ListTileItem extends StatelessWidget {
   final String title;
   final String? subtitle;
-  final IconData? icon;
+  final Widget? leading;
   final VoidCallback? onTap;
   final Widget? trailing;
 
@@ -13,7 +13,7 @@ class ListTileItem extends StatelessWidget {
     super.key,
     required this.title,
     this.subtitle,
-    this.icon,
+    this.leading,
     this.onTap,
     this.trailing,
   });
@@ -26,8 +26,8 @@ class ListTileItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Row(
           children: [
-            if (icon != null) ...[
-              Icon(icon, color: AppColors.primaryBlue, size: 28),
+            if (leading != null) ...[
+              leading!,
               const SizedBox(width: 16),
             ],
             Expanded(

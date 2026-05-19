@@ -4,6 +4,10 @@ import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/ticket/presentation/pages/ticket_empty_page.dart';
 import '../../features/subscription/presentation/pages/subscription_empty_page.dart';
 import '../../features/profile/presentation/pages/profile_wrapper.dart'; // We'll create this to handle auth/unauth profile
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/auth/presentation/bloc/auth_bloc.dart';
+import '../../features/auth/presentation/bloc/auth_event.dart';
+import '../../features/auth/presentation/bloc/auth_state.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
@@ -38,6 +42,23 @@ class _MainScaffoldState extends State<MainScaffold> {
       bottomNavigationBar: AppBottomNav(
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
+      ),
+      floatingActionButton: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          final isAuthenticated = state is Authenticated;
+          return FloatingActionButton.extended(
+            onPressed: () {
+              if (isAuthenticated) {
+                context.read<AuthBloc>().add(LoggedOut());
+              } else {
+                context.read<AuthBloc>().add(const LoggedIn(phoneNumber: 'debug', password: 'debug'));
+              }
+            },
+            icon: Icon(isAuthenticated ? Icons.logout : Icons.login),
+            label: Text(isAuthenticated ? 'Test Unauth' : 'Test Auth'),
+            backgroundColor: isAuthenticated ? Colors.redAccent : Colors.green,
+          );
+        },
       ),
     );
   }

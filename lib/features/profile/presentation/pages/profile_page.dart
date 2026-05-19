@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../config/theme/app_colors.dart';
-import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/list_tile_item.dart';
 import '../../../../shared/widget/app_button.dart';
 import '../../../../features/auth/presentation/bloc/auth_bloc.dart';
@@ -37,32 +36,32 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ListTileItem(
-              icon: Icons.account_circle_outlined,
+              leading: const Icon(Icons.account_circle_outlined, color: AppColors.primaryBlue, size: 28),
               title: 'Account',
               subtitle: 'Change your account data',
               onTap: () {},
             ),
             const Divider(indent: 24, endIndent: 24, height: 1),
             ListTileItem(
-              icon: Icons.domain,
+              leading: const Icon(Icons.domain, color: AppColors.primaryBlue, size: 28),
               title: 'Business Account',
               subtitle: 'You are using personal mode',
               trailing: Switch(
                 value: false,
                 onChanged: (val) {},
-                activeColor: AppColors.primaryBlue,
+                activeThumbColor: AppColors.primaryBlue,
               ),
             ),
             const Divider(indent: 24, endIndent: 24, height: 1),
             ListTileItem(
-              icon: Icons.account_balance_wallet_outlined,
+              leading: const Icon(Icons.account_balance_wallet_outlined, color: AppColors.primaryBlue, size: 28),
               title: 'Payment',
               subtitle: 'Set up your connected payment',
               onTap: () {},
             ),
             const Divider(indent: 24, endIndent: 24, height: 1),
             ListTileItem(
-              icon: Icons.history,
+              leading: const Icon(Icons.history, color: AppColors.primaryBlue, size: 28),
               title: 'Activity History',
               subtitle: 'Past ticket history',
               onTap: () {},

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../bloc/auth_bloc.dart';
+import '../bloc/auth_state.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 import '../widgets/login_form.dart';
@@ -9,19 +13,31 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.surface,
-      appBar: AppBar(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is Authenticated) {
+          context.go('/');
+        }
+      },
+      child: Scaffold(
         backgroundColor: AppColors.surface,
-        iconTheme: const IconThemeData(color: AppColors.textPrimary),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+        appBar: AppBar(
+          backgroundColor: AppColors.surface,
+          iconTheme: const IconThemeData(color: AppColors.textPrimary),
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+        body: SafeArea(
+          child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
@@ -87,6 +103,7 @@ class LoginPage extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ),
+  );
   }
 }

@@ -19,32 +19,32 @@ class GeneralMenu extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         ListTileItem(
-          icon: Icons.language,
+          leading: const Icon(Icons.language, color: AppColors.primaryBlue, size: 28),
           title: 'Language',
           subtitle: 'Select the language / Choose Language',
           onTap: () {},
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
-          icon: Icons.help_outline,
+          leading: const Icon(Icons.help_outline, color: AppColors.primaryBlue, size: 28),
           title: 'Help',
           onTap: () {},
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
-          icon: Icons.article_outlined,
+          leading: const Icon(Icons.article_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Terms and Conditions',
           onTap: () {},
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
-          icon: Icons.privacy_tip_outlined,
+          leading: const Icon(Icons.privacy_tip_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Privacy Policy',
           onTap: () {},
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
-          icon: Icons.system_update_outlined,
+          leading: const Icon(Icons.system_update_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Application Version',
           subtitle: '4.16.0',
           trailing: const SizedBox.shrink(), // No chevron for version
