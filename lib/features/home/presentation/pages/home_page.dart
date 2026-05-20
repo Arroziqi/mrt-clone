@@ -17,12 +17,11 @@ class HomePage extends StatelessWidget {
         slivers: [
           // Sticky-ish blue header with the ticket search card
           SliverToBoxAdapter(
-            child: HomeHeader(
-              child: const TicketSearchCard(),
-            ),
+            child: HomeHeader(child: const TicketSearchCard()),
           ),
+
           // Space reserved for the overlapping TicketSearchCard
-          const SliverToBoxAdapter(child: SizedBox(height: 220)),
+          const SliverToBoxAdapter(child: SizedBox(height: 24)),
 
           // Top promo banner (auto-scrolling)
           const SliverToBoxAdapter(child: HomeTopBanner()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../config/theme/app_text_style.dart';
 import 'menu_grid_item.dart';
 
@@ -20,6 +21,11 @@ const List<_MenuEntry> _kMenuItems = [
   _MenuEntry(Icons.stars, 'Points', bgColor: Color(0xFFFFF9C4)),
   _MenuEntry(Icons.more_horiz, 'Other', bgColor: Color(0xFFF5F5F5)),
 ];
+
+const Map<int, String> _kRoutes = {
+  2: '/buy-ticket',  // Ticket
+  3: '/schedule',   // Schedule
+};
 
 /// The MyMRTJ Menu grid showing 8 icons in two rows.
 class MainMenuGrid extends StatelessWidget {
@@ -55,7 +61,10 @@ class MainMenuGrid extends StatelessWidget {
             itemBuilder: (_, i) {
               final e = _kMenuItems[i];
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  final route = _kRoutes[i];
+                  if (route != null) context.push(route);
+                },
                 child: MenuGridItem(
                   icon: e.icon,
                   label: e.label,

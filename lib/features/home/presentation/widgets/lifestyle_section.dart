@@ -49,7 +49,8 @@ class LifestyleSection extends StatelessWidget {
         // ── Tourist Attraction & Events ───────────────────────────────
         HomeSectionHeader(
           title: 'Tourist attraction and Events',
-          subtitle: 'View events and tourist attractions that you can visit using the MRT!',
+          subtitle:
+              'View events and tourist attractions that you can visit using the MRT!',
           onViewAll: () {},
         ),
         const SizedBox(height: 12),
@@ -77,9 +78,27 @@ class _TicketPromoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final promos = [
-      _PromoData('Cashback Points 50%', '50%', AppColors.accentYellow, const Color(0xFF1565C0), const Color(0xFF0D47A1)),
-      _PromoData('Cashback 100% blu', '100%', Colors.white, const Color(0xFF00838F), const Color(0xFF006064)),
-      _PromoData('Cashback 100% GoPay', '100%', Colors.white, const Color(0xFF1B5E20), const Color(0xFF2E7D32)),
+      _PromoData(
+        'Cashback Points 50%',
+        '50%',
+        AppColors.accentYellow,
+        const Color(0xFF1565C0),
+        const Color(0xFF0D47A1),
+      ),
+      _PromoData(
+        'Cashback 100% blu',
+        '100%',
+        Colors.white,
+        const Color(0xFF00838F),
+        const Color(0xFF006064),
+      ),
+      _PromoData(
+        'Cashback 100% GoPay',
+        '100%',
+        Colors.white,
+        const Color(0xFF1B5E20),
+        const Color(0xFF2E7D32),
+      ),
     ];
     return SizedBox(
       height: 160,
@@ -104,12 +123,29 @@ class _LifestylePromoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final promos = [
-      _PromoData('Diskon 45% Single Class Pilates', '45%', AppColors.accentYellow, const Color(0xFF4A3728), const Color(0xFF5D4037)),
-      _PromoData('Diskon 15% UP at Thamrin Nine', '15%', Colors.white, const Color(0xFF0277BD), const Color(0xFF01579B)),
-      _PromoData('Buy 1 Get 1 Nasi Goreng Semangat', 'B1G1', Colors.white, const Color(0xFFE65100), const Color(0xFFBF360C)),
+      _PromoData(
+        'Diskon 45% Single Class Pilates',
+        '45%',
+        AppColors.accentYellow,
+        const Color(0xFF4A3728),
+        const Color(0xFF5D4037),
+      ),
+      _PromoData(
+        'Diskon 15% UP at Thamrin Nine',
+        '15%',
+        Colors.white,
+        const Color(0xFF0277BD),
+        const Color(0xFF01579B),
+      ),
+      _PromoData(
+        'Buy 1 Get 1 Nasi Goreng Semangat',
+        'B1G1',
+        Colors.white,
+        const Color(0xFFE65100),
+        const Color(0xFFBF360C),
+      ),
     ];
     return SizedBox(
-      height: 160,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
@@ -131,10 +167,30 @@ class _TouristEventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final events = [
-      _EventData('ONE OK ROCK DETOX Asia Tour 2026', 'Concert', const Color(0xFF1A1A2E), Icons.music_note),
-      _EventData('Rips & Run 2026', 'Sport', const Color(0xFF1B5E20), Icons.directions_run),
-      _EventData('Symphony Worship Family', 'Concert', const Color(0xFF4A148C), Icons.queue_music),
-      _EventData('Wisata Edukasi MRT Jakarta', 'Education', const Color(0xFF1565C0), Icons.school),
+      _EventData(
+        'ONE OK ROCK DETOX Asia Tour 2026',
+        'Concert',
+        const Color(0xFF1A1A2E),
+        Icons.music_note,
+      ),
+      _EventData(
+        'Rips & Run 2026',
+        'Sport',
+        const Color(0xFF1B5E20),
+        Icons.directions_run,
+      ),
+      _EventData(
+        'Symphony Worship Family',
+        'Concert',
+        const Color(0xFF4A148C),
+        Icons.queue_music,
+      ),
+      _EventData(
+        'Wisata Edukasi MRT Jakarta',
+        'Education',
+        const Color(0xFF1565C0),
+        Icons.school,
+      ),
     ];
     return SizedBox(
       height: 200,
@@ -158,10 +214,26 @@ class _ResidentialList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final residentials = [
-      _ResidentialData('Cove Taman Haji Nawi', 'PT Cove Living Indon...', const Color(0xFF795548)),
-      _ResidentialData('Cove Sixth8 Blok M', 'PT Cove Living Indon...', const Color(0xFF607D8B)),
-      _ResidentialData('Cove District Station M', 'PT Cove Living Indon...', const Color(0xFF546E7A)),
-      _ResidentialData('Rukita Wood Residence', 'Rukita', const Color(0xFF6D4C41)),
+      _ResidentialData(
+        'Cove Taman Haji Nawi',
+        'PT Cove Living Indon...',
+        const Color(0xFF795548),
+      ),
+      _ResidentialData(
+        'Cove Sixth8 Blok M',
+        'PT Cove Living Indon...',
+        const Color(0xFF607D8B),
+      ),
+      _ResidentialData(
+        'Cove District Station M',
+        'PT Cove Living Indon...',
+        const Color(0xFF546E7A),
+      ),
+      _ResidentialData(
+        'Rukita Wood Residence',
+        'Rukita',
+        const Color(0xFF6D4C41),
+      ),
     ];
     return SizedBox(
       height: 195,
@@ -187,7 +259,13 @@ class _ResidentialList extends StatelessWidget {
 class _PromoData {
   final String title, badge;
   final Color badgeColor, bgColor, bgColorEnd;
-  const _PromoData(this.title, this.badge, this.badgeColor, this.bgColor, this.bgColorEnd);
+  const _PromoData(
+    this.title,
+    this.badge,
+    this.badgeColor,
+    this.bgColor,
+    this.bgColorEnd,
+  );
 }
 
 class _EventData {
