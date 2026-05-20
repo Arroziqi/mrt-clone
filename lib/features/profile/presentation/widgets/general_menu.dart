@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../config/theme/app_colors.dart';
+import '../../../../config/routes/app_router.dart';
 import '../../../../shared/widget/list_tile_item.dart';
+import '../../bloc/language_cubit.dart';
+import '../../bloc/language_state.dart';
+import 'language_bottom_sheet.dart';
 
 class GeneralMenu extends StatelessWidget {
   const GeneralMenu({super.key});
@@ -18,36 +24,40 @@ class GeneralMenu extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        ListTileItem(
-          leading: const Icon(Icons.language, color: AppColors.primaryBlue, size: 28),
-          title: 'Language',
-          subtitle: 'Select the language / Choose Language',
-          onTap: () {},
+        BlocBuilder<LanguageCubit, LanguageState>(
+          builder: (context, langState) {
+            return ListTileItem(
+              leading: const Icon(Icons.language, color: AppColors.primaryBlue, size: 28),
+              title: 'Language',
+              subtitle: '${langState.flagEmoji}  ${langState.displayName}',
+              onTap: () => LanguageBottomSheet.show(context),
+            );
+          },
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
           leading: const Icon(Icons.help_outline, color: AppColors.primaryBlue, size: 28),
           title: 'Help',
-          onTap: () {},
+          onTap: () => context.push('/help'),
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
           leading: const Icon(Icons.article_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Terms and Conditions',
-          onTap: () {},
+          onTap: () => AppRouter.showTerms(context),
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
           leading: const Icon(Icons.privacy_tip_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Privacy Policy',
-          onTap: () {},
+          onTap: () => AppRouter.showPrivacyPolicy(context),
         ),
         const Divider(indent: 24, endIndent: 24, height: 1),
         ListTileItem(
           leading: const Icon(Icons.system_update_outlined, color: AppColors.primaryBlue, size: 28),
           title: 'Application Version',
           subtitle: '4.16.0',
-          trailing: const SizedBox.shrink(), // No chevron for version
+          trailing: const SizedBox.shrink(),
         ),
       ],
     );

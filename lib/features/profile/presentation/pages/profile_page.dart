@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../shared/widget/list_tile_item.dart';
 import '../../../../shared/widget/app_button.dart';
@@ -26,7 +27,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             const ProfileHeader(),
             const SizedBox(height: 24),
-            
+
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
               child: Text(
@@ -39,7 +40,7 @@ class ProfilePage extends StatelessWidget {
               leading: const Icon(Icons.account_circle_outlined, color: AppColors.primaryBlue, size: 28),
               title: 'Account',
               subtitle: 'Change your account data',
-              onTap: () {},
+              onTap: () => context.push('/account'),
             ),
             const Divider(indent: 24, endIndent: 24, height: 1),
             ListTileItem(
@@ -57,19 +58,19 @@ class ProfilePage extends StatelessWidget {
               leading: const Icon(Icons.account_balance_wallet_outlined, color: AppColors.primaryBlue, size: 28),
               title: 'Payment',
               subtitle: 'Set up your connected payment',
-              onTap: () {},
+              onTap: () => context.push('/payment-settings'),
             ),
             const Divider(indent: 24, endIndent: 24, height: 1),
             ListTileItem(
               leading: const Icon(Icons.history, color: AppColors.primaryBlue, size: 28),
               title: 'Activity History',
               subtitle: 'Past ticket history',
-              onTap: () {},
+              onTap: () => context.push('/activity'),
             ),
-            
+
             const SizedBox(height: 24),
             const GeneralMenu(),
-            
+
             const SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -88,3 +89,4 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
+

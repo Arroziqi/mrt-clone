@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 
@@ -53,16 +54,19 @@ class HomeHeader extends StatelessWidget {
                       const SizedBox(height: 8),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.notifications_outlined,
-                      color: AppColors.surface,
-                      size: 22,
+                  GestureDetector(
+                    onTap: () => context.push('/notification'),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.15),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.notifications_outlined,
+                        color: AppColors.surface,
+                        size: 22,
+                      ),
                     ),
                   ),
                 ],
