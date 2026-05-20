@@ -14,6 +14,7 @@ import '../../features/profile/presentation/pages/help_page.dart';
 import '../../features/profile/presentation/pages/faq_page.dart';
 import '../../features/profile/presentation/pages/privacy_policy_page.dart';
 import '../../features/profile/presentation/pages/terms_page.dart';
+import '../../shared/models/mrt_station.dart';
 import '../../shared/widget/main_scaffold.dart';
 
 class AppRouter {
@@ -36,12 +37,26 @@ class AppRouter {
         path: '/pin',
         builder: (context, state) {
           final isCreate = state.uri.queryParameters['isCreate'] == 'true';
-          return PinPage(isCreate: isCreate);
+          final extra = state.extra as Map<String, dynamic>?;
+          return PinPage(
+            isCreate: isCreate,
+            phoneNumber: extra?['phoneNumber'] as String? ?? '',
+            fullName: extra?['fullName'] as String?,
+            email: extra?['email'] as String?,
+          );
         },
       ),
       GoRoute(
         path: '/buy-ticket',
-        builder: (context, state) => const BuyTicketPage(),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final departure = extra?['departure'] as MrtStation?;
+          final destination = extra?['destination'] as MrtStation?;
+          return BuyTicketPage(
+            initialDeparture: departure,
+            initialDestination: destination,
+          );
+        },
       ),
       GoRoute(
         path: '/schedule',

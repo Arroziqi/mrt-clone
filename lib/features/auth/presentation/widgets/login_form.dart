@@ -3,9 +3,6 @@ import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/app_button.dart';
 import '../../../../shared/widget/app_textfield.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/auth_bloc.dart';
-import '../bloc/auth_event.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -25,7 +22,9 @@ class _LoginFormState extends State<LoginForm> {
 
   void _onLogin() {
     // In a real app, validate input first
-    context.push('/pin?isCreate=false');
+    context.push('/pin?isCreate=false', extra: {
+      'phoneNumber': _phoneController.text,
+    });
   }
 
   @override

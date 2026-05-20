@@ -10,7 +10,14 @@ import '../widgets/voucher_card.dart';
 import '../widgets/purchase_summary.dart';
 
 class BuyTicketPage extends StatefulWidget {
-  const BuyTicketPage({super.key});
+  final MrtStation? initialDeparture;
+  final MrtStation? initialDestination;
+
+  const BuyTicketPage({
+    super.key,
+    this.initialDeparture,
+    this.initialDestination,
+  });
 
   @override
   State<BuyTicketPage> createState() => _BuyTicketPageState();
@@ -23,6 +30,13 @@ class _BuyTicketPageState extends State<BuyTicketPage> {
   int _passengers = 1;
   bool _addOnEnabled = false;
   final _voucherController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _departure = widget.initialDeparture;
+    _destination = widget.initialDestination;
+  }
 
   @override
   void dispose() {

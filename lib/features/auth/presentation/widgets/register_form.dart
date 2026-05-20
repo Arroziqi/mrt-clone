@@ -14,27 +14,49 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   bool _agreedToTerms = false;
+  final _phoneController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  void _onNext() {
+    context.push('/pin?isCreate=true', extra: {
+      'phoneNumber': _phoneController.text,
+      'fullName': _nameController.text,
+      'email': _emailController.text,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const AppTextField(
+        AppTextField(
           label: 'Phone Number',
           hint: '812 3456 7890',
           prefixText: '+62',
+          controller: _phoneController,
           keyboardType: TextInputType.phone,
         ),
         const SizedBox(height: 16),
-        const AppTextField(
+        AppTextField(
           label: 'Full Name',
           hint: 'Input Full Name',
+          controller: _nameController,
         ),
         const SizedBox(height: 16),
-        const AppTextField(
+        AppTextField(
           label: 'Email',
           hint: 'Input Email',
+          controller: _emailController,
           keyboardType: TextInputType.emailAddress,
         ),
         const SizedBox(height: 24),
@@ -67,7 +89,7 @@ class _RegisterFormState extends State<RegisterForm> {
         const SizedBox(height: 32),
         AppButton(
           text: 'Next',
-          onPressed: _agreedToTerms ? () => context.push('/pin?isCreate=true') : null, // Disabled if not agreed
+          onPressed: _agreedToTerms ? _onNext : null, // Disabled if not agreed
         ),
       ],
     );

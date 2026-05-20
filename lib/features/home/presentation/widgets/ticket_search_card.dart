@@ -2,11 +2,71 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
+import '../../../../shared/models/mrt_station.dart';
 import '../../../../shared/widget/app_button.dart';
+import '../../../../shared/widget/station_selector_sheet.dart';
 
 /// The floating ticket search card that overlaps the blue header.
-class TicketSearchCard extends StatelessWidget {
+class TicketSearchCard extends StatefulWidget {
   const TicketSearchCard({super.key});
+
+  @override
+  State<TicketSearchCard> createState() => _TicketSearchCardState();
+}
+
+class _TicketSearchCardState extends State<TicketSearchCard> {
+  MrtStation? _departure;
+  MrtStation? _destination;
+
+  Future<void> _pickDeparture() async {
+    final result = await showModalBottomSheet<MrtStation>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => StationSelectorSheet(
+        mode: StationSelectorMode.departure,
+        currentSelection: _departure,
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        _departure = result;
+        if (_destination == result) _destination = null;
+      });
+    }
+  }
+
+  Future<void> _pickDestination() async {
+    if (_departure == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select a departure station first.')),
+      );
+      return;
+    }
+    final result = await showModalBottomSheet<MrtStation>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => StationSelectorSheet(
+        mode: StationSelectorMode.destination,
+        departureStation: _departure,
+        currentSelection: _destination,
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        _destination = result;
+      });
+    }
+  }
+
+  void _swap() {
+    setState(() {
+      final tmp = _departure;
+      _departure = _destination;
+      _destination = tmp;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,18 +142,22 @@ class TicketSearchCard extends StatelessWidget {
                         _StationField(
                           hint: 'Select Departure Station',
                           label: 'From the Station',
+                          value: _departure?.name,
+                          onTap: _pickDeparture,
                         ),
                         const SizedBox(height: 10),
                         _StationField(
                           hint: 'Select Destination Station',
                           label: 'To Station',
+                          value: _destination?.name,
+                          onTap: _pickDestination,
                         ),
                       ],
                     ),
                   ),
                   const SizedBox(width: 8),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: _swap,
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
@@ -113,7 +177,15 @@ class TicketSearchCard extends StatelessWidget {
               const SizedBox(height: 14),
               AppButton(
                 text: 'Buy Ticket',
-                onPressed: () => context.push('/buy-ticket'),
+                onPressed: () {
+                  context.push(
+                    '/buy-ticket',
+                    extra: {
+                      'departure': _departure,
+                      'destination': _destination,
+                    },
+                  );
+                },
                 variant: AppButtonVariant.primaryGreen,
               ),
             ],
@@ -128,13 +200,20 @@ class TicketSearchCard extends StatelessWidget {
 class _StationField extends StatelessWidget {
   final String label;
   final String hint;
+  final String? value;
+  final VoidCallback onTap;
 
-  const _StationField({required this.label, required this.hint});
+  const _StationField({
+    required this.label,
+    required this.hint,
+    required this.onTap,
+    this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push('/buy-ticket'),
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -155,10 +234,11 @@ class _StationField extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              hint,
+              value ?? hint,
               style: AppTextStyle.bodySmall.copyWith(
                 fontSize: 12,
-                color: AppColors.disabled,
+                color: value != null ? AppColors.textPrimary : AppColors.disabled,
+                fontWeight: value != null ? FontWeight.w600 : null,
               ),
             ),
           ],
