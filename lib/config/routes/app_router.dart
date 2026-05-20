@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
+import '../../features/auth/presentation/pages/pin_page.dart';
 import '../../features/ticket/presentation/pages/buy_ticket_page.dart';
 import '../../features/ticket/presentation/pages/schedule_page.dart';
 import '../../features/ticket/presentation/pages/payment_page.dart';
@@ -30,6 +31,13 @@ class AppRouter {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterPage(),
+      ),
+      GoRoute(
+        path: '/pin',
+        builder: (context, state) {
+          final isCreate = state.uri.queryParameters['isCreate'] == 'true';
+          return PinPage(isCreate: isCreate);
+        },
       ),
       GoRoute(
         path: '/buy-ticket',

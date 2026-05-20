@@ -3,6 +3,7 @@ import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/app_button.dart';
 import '../../../../shared/widget/app_textfield.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -66,7 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
         const SizedBox(height: 32),
         AppButton(
           text: 'Next',
-          onPressed: _agreedToTerms ? () {} : null, // Disabled if not agreed
+          onPressed: _agreedToTerms ? () => context.push('/pin?isCreate=true') : null, // Disabled if not agreed
         ),
       ],
     );

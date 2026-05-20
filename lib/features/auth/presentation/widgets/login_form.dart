@@ -25,10 +25,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _onLogin() {
     // In a real app, validate input first
-    context.read<AuthBloc>().add(LoggedIn(
-      phoneNumber: _phoneController.text,
-      password: 'mock_password',
-    ));
+    context.push('/pin?isCreate=false');
   }
 
   @override
