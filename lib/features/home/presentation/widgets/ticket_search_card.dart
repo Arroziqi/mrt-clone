@@ -3,34 +3,9 @@ import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/app_button.dart';
 
+/// The floating ticket search card that overlaps the blue header.
 class TicketSearchCard extends StatelessWidget {
   const TicketSearchCard({super.key});
-
-  Widget _buildStationInput(String label) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: AppTextStyle.bodySmall.copyWith(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: 4),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: AppColors.surface,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.border),
-          ),
-          child: Text(
-            'Select ${label.split(' ')[0]} Station',
-            style: AppTextStyle.body.copyWith(color: AppColors.textSecondary),
-          ),
-        ),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +16,8 @@ class TicketSearchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
+            color: Colors.black.withValues(alpha: 0.08),
+            blurRadius: 16,
             offset: const Offset(0, 4),
           ),
         ],
@@ -52,52 +27,100 @@ class TicketSearchCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.near_me, color: AppColors.primaryBlue, size: 16),
-              const SizedBox(width: 8),
-              Text(
-                'You are 1 km from ASEAN station',
-                style: AppTextStyle.bodySmall.copyWith(color: AppColors.primaryBlue),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
               Column(
                 children: [
-                  const Icon(Icons.location_on, color: AppColors.primaryGreen, size: 20),
-                  Container(height: 30, width: 2, color: AppColors.border),
-                  const Icon(Icons.location_on, color: Colors.red, size: 20),
+                  Container(
+                    width: 10,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: AppColors.primaryGreen,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  Container(height: 28, width: 2, color: AppColors.border),
+                  Container(
+                    width: 10,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   children: [
-                    _buildStationInput('From the Station'),
-                    const SizedBox(height: 16),
-                    _buildStationInput('To Station'),
+                    _StationField(hint: 'Select Departure Station', label: 'From the Station'),
+                    const SizedBox(height: 10),
+                    _StationField(hint: 'Select Destination Station', label: 'To Station'),
                   ],
                 ),
               ),
-              const SizedBox(width: 12),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: AppColors.background,
-                  shape: BoxShape.circle,
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.background,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.border),
+                  ),
+                  child: const Icon(Icons.swap_vert, color: AppColors.primaryBlue, size: 20),
                 ),
-                child: const Icon(Icons.swap_vert, color: AppColors.primaryBlue),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           AppButton(
             text: 'Buy Ticket',
-            onPressed: () {}, // Navigate to buy ticket or switch tab
+            onPressed: () {},
             variant: AppButtonVariant.primaryGreen,
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Single station selector field.
+class _StationField extends StatelessWidget {
+  final String label;
+  final String hint;
+
+  const _StationField({required this.label, required this.hint});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        decoration: BoxDecoration(
+          color: AppColors.background,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: AppTextStyle.bodySmall.copyWith(fontSize: 10, color: AppColors.textSecondary),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              hint,
+              style: AppTextStyle.bodySmall.copyWith(
+                fontSize: 12,
+                color: AppColors.disabled,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

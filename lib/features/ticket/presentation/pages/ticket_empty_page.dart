@@ -85,7 +85,7 @@ class TicketEmptyPage extends StatelessWidget {
             Container(
               height: 100,
               decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.05),
+                color: Colors.blue.withValues(alpha: 0.05),
               ),
             ),
           ],

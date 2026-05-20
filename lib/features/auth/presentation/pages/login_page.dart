@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                     children: [
                       Container(
                         height: 80,
-                        color: Colors.blue.withOpacity(0.05), // Placeholder for cityscape
+                        color: Colors.blue.withValues(alpha: 0.05), // Placeholder for cityscape
                       ),
                       Container(
                         height: 20,
