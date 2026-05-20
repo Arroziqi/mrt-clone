@@ -10,6 +10,8 @@ import 'core/network/token_storage.dart';
 import 'features/auth/data/repository/auth_repository_impl.dart';
 import 'features/ticket/data/repositories/schedule_repository.dart';
 import 'features/ticket/presentation/bloc/schedule/schedule_bloc.dart';
+import 'features/ticket/data/repositories/payment_repository.dart';
+import 'features/ticket/presentation/bloc/payment/payment_cubit.dart';
 
 void main() {
   final tokenStorage = TokenStorage();
@@ -21,11 +23,15 @@ void main() {
   final scheduleRepository = ScheduleRepository(
     apiClient: apiClient,
   );
+  final paymentRepository = PaymentRepository(
+    apiClient: apiClient,
+  );
 
   runApp(MyApp(
     authRepository: authRepository,
     tokenStorage: tokenStorage,
     scheduleRepository: scheduleRepository,
+    paymentRepository: paymentRepository,
   ));
 }
 
@@ -33,12 +39,14 @@ class MyApp extends StatelessWidget {
   final AuthRepositoryImpl authRepository;
   final TokenStorage tokenStorage;
   final ScheduleRepository scheduleRepository;
+  final PaymentRepository paymentRepository;
 
   const MyApp({
     super.key,
     required this.authRepository,
     required this.tokenStorage,
     required this.scheduleRepository,
+    required this.paymentRepository,
   });
 
   @override
@@ -56,6 +64,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ScheduleBloc>(
           create: (_) => ScheduleBloc(repository: scheduleRepository),
+        ),
+        BlocProvider<PaymentCubit>(
+          create: (_) => PaymentCubit(repository: paymentRepository),
         ),
       ],
       child: MaterialApp.router(

@@ -5,6 +5,7 @@ import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
+import '../../../../shared/widget/illustrations/city_train_illustration.dart';
 import '../widgets/login_form.dart';
 import '../widgets/social_login_button.dart';
 
@@ -44,7 +45,7 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 48),
-                // Logo Placeholder
+                // Logo
                 Center(
                   child: Column(
                     children: [
@@ -77,26 +78,10 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 32),
                 SocialLoginButton(onPressed: () {}),
                 const SizedBox(height: 48),
-                // Cityscape Background Placeholder (using an image or container)
-                SizedBox(
-                  height: 100,
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Container(
-                        height: 80,
-                        color: Colors.blue.withValues(alpha: 0.05), // Placeholder for cityscape
-                      ),
-                      Container(
-                        height: 20,
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
-                        ), // Placeholder for train
-                      ),
-                    ],
-                  ),
+                // Animated cityscape with MRT train
+                const ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                  child: CityTrainIllustration(height: 100),
                 ),
               ],
             ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/app_button.dart';
+import '../../../../shared/widget/illustrations/ticket_illustration.dart';
+import '../../../../shared/widget/illustrations/city_train_illustration.dart';
 
 class TicketEmptyPage extends StatelessWidget {
   const TicketEmptyPage({super.key});
@@ -48,16 +50,7 @@ class TicketEmptyPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Placeholder for illustration
-                      Container(
-                        width: 200,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.image, size: 80, color: Colors.grey),
-                      ),
+                      const TicketIllustration(),
                       const SizedBox(height: 32),
                       Text(
                         'To use tickets, you need to purchase them first.',
@@ -81,13 +74,8 @@ class TicketEmptyPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Bottom cityscape placeholder
-            Container(
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.blue.withValues(alpha: 0.05),
-              ),
-            ),
+            // Bottom cityscape with animated train
+            const CityTrainIllustration(height: 100),
           ],
         ),
       ),

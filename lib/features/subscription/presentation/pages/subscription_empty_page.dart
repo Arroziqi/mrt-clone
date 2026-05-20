@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
 import '../../../../shared/widget/app_button.dart';
+import '../../../../shared/widget/illustrations/subscription_illustration.dart';
 
 class SubscriptionEmptyPage extends StatelessWidget {
   const SubscriptionEmptyPage({super.key});
@@ -95,16 +96,7 @@ class SubscriptionEmptyPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Placeholder for illustration
-                    Container(
-                      width: 160,
-                      height: 160,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.image, size: 60, color: Colors.grey),
-                    ),
+                    const SubscriptionIllustration(),
                     const SizedBox(height: 32),
                     Text(
                       'There\'s no Subscription',

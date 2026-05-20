@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/app_text_style.dart';
+import '../../../../shared/widget/illustrations/event_phone_illustration.dart';
 
 /// The big lifestyle/events tab-banner shown below MyMRTJ Menu.
 /// Displays tabbed categories (Events, Banking, Entertainment) with a promo visual.
@@ -108,16 +109,7 @@ class _LifestyleBannerState extends State<LifestyleBanner> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                // Phone mockup placeholder
-                Container(
-                  width: 90,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Icon(Icons.smartphone, color: Colors.white, size: 48),
-                ),
+                const EventPhoneIllustration(),
               ],
             ),
           ),

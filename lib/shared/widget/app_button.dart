@@ -77,15 +77,15 @@ class AppButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (iconPath != null) ...[
-              // Placeholder for social icon (e.g. Google logo)
+              // Google icon
               Container(
                 width: 24,
                 height: 24,
                 decoration: const BoxDecoration(
-                  color: Colors.grey, // Placeholder
+                  color: Colors.white,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.g_mobiledata, color: Colors.white, size: 20),
+                child: const Icon(Icons.g_mobiledata, color: Color(0xFFDB4437), size: 20),
               ),
               const SizedBox(width: 8),
             ],
