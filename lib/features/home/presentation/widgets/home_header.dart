@@ -75,8 +75,6 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
         ),
-        // Overlapping ticket search card
-        // Positioned(top: 135, left: 16, right: 16, child: child),
       ],
     );
   }

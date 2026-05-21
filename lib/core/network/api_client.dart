@@ -27,7 +27,7 @@ class ApiClient {
           return handler.next(options);
         },
         onError: (DioException e, handler) {
-          // You could handle global errors here (e.g., 401 unauthenticated to trigger logout)
+          // could handle global errors here (e.g., 401 unauthenticated to trigger logout)
           return handler.next(e);
         },
       ),
