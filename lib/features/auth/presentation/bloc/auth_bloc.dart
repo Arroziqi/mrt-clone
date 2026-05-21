@@ -10,9 +10,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc({
     required this._authRepository,
-    required TokenStorage tokenStorage,
-  })  : _tokenStorage = tokenStorage,
-        super(AuthInitial()) {
+    required this._tokenStorage,
+  })  : super(AuthInitial()) {
     on<AppStarted>(_onAppStarted);
     on<LoggedIn>(_onLoggedIn);
     on<Registered>(_onRegistered);

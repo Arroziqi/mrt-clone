@@ -5,7 +5,7 @@ import '../models/schedule_model.dart';
 class ScheduleRepository {
   final ApiClient _apiClient;
 
-  ScheduleRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  ScheduleRepository({required this._apiClient});
 
   Future<ScheduleData> getStationSchedule(String stationId) async {
     try {

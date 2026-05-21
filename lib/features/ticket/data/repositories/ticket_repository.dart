@@ -7,7 +7,7 @@ import '../models/paginated_response.dart';
 class TicketRepository {
   final ApiClient _apiClient;
 
-  TicketRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  TicketRepository({required this._apiClient});
 
   /// Fetch all active tickets for the authenticated user.
   Future<List<TicketModel>> getActiveTickets() async {

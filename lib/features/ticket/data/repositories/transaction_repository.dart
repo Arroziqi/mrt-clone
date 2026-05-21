@@ -7,7 +7,7 @@ import '../models/paginated_response.dart';
 class TransactionRepository {
   final ApiClient _apiClient;
 
-  TransactionRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  TransactionRepository({required this._apiClient});
 
   /// Fetch all pending transactions for the authenticated user.
   Future<List<TransactionModel>> getPendingTransactions() async {

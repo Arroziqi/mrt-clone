@@ -5,7 +5,7 @@ import '../models/payment_models.dart';
 class PaymentRepository {
   final ApiClient _apiClient;
 
-  PaymentRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  PaymentRepository({required this._apiClient});
 
   Future<PaymentResponse> createPayment(PaymentRequest request) async {
     try {

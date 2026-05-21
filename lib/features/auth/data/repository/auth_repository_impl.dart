@@ -10,8 +10,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
   AuthRepositoryImpl({
     required this._apiClient,
-    required TokenStorage tokenStorage,
-  })  : _tokenStorage = tokenStorage;
+    required this._tokenStorage,
+  });
 
   @override
   Future<UserModel> login(String phoneNumber, String pin) async {

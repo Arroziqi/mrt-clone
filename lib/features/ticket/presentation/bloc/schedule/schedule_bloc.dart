@@ -6,9 +6,8 @@ import '../../../data/repositories/schedule_repository.dart';
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   final ScheduleRepository _repository;
 
-  ScheduleBloc({required ScheduleRepository repository})
-      : _repository = repository,
-        super(ScheduleInitial()) {
+  ScheduleBloc({required this._repository})
+      : super(ScheduleInitial()) {
     on<LoadSchedule>(_onLoadSchedule);
   }
 

@@ -10,11 +10,9 @@ class TicketCubit extends Cubit<TicketState> {
   final TransactionRepository _transactionRepository;
 
   TicketCubit({
-    required TicketRepository ticketRepository,
-    required TransactionRepository transactionRepository,
-  })  : _ticketRepository = ticketRepository,
-        _transactionRepository = transactionRepository,
-        super(TicketInitial());
+    required this._ticketRepository,
+    required this._transactionRepository,
+  })  : super(TicketInitial());
 
   /// Load active tickets and pending transactions.
   Future<void> loadTickets() async {
