@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'app_bottom_nav.dart';
 import '../../features/home/presentation/pages/home_page.dart';
-import '../../features/ticket/presentation/pages/ticket_empty_page.dart';
+import '../../features/ticket/presentation/pages/ticket_page.dart';
 import '../../features/subscription/presentation/pages/subscription_empty_page.dart';
-import '../../features/profile/presentation/pages/profile_wrapper.dart'; // We'll create this to handle auth/unauth profile
+import '../../features/profile/presentation/pages/profile_wrapper.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({super.key});
@@ -17,7 +17,7 @@ class _MainScaffoldState extends State<MainScaffold> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const TicketEmptyPage(),
+    const TicketPage(),
     const SubscriptionEmptyPage(),
     const ProfileWrapper(),
   ];
@@ -42,3 +42,4 @@ class _MainScaffoldState extends State<MainScaffold> {
     );
   }
 }
+
