@@ -34,7 +34,15 @@ The app uses a clean architecture style with separate layers for:
 
 - Flutter SDK installed
 - An Android/iOS emulator or physical device
-- A running backend instance (see `mrt_backend`)
+- A running backend instance (see Backend Repository below)
+
+## Backend Repository
+
+The backend for this project is a MERN stack application available at:
+
+**https://github.com/Arroziqi/mrt-clone-mern.git**
+
+Follow the backend repository's README for setup and running instructions.
 
 ### Install dependencies
 
